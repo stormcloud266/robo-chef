@@ -17,15 +17,22 @@ model User {
 }
 
 model Post {
-  id String @id @default(cuid())
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 
-  user   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  user      User?   @relation(fields: [userId], references: [id])
+  userId    String?
+  published Boolean @default(false)
 
-  body        String
-  ingredients String[]
-  preparation String[]
-  prepTime    Int
-  cookTime    Int
-  rating      Int
+  title           String
+  metaDescription String
+  slug            String
+  excerpt         String
+  body            String
+  ingredients     String[]
+  preparation     String[]
+  prepTime        Int
+  cookTime        Int
+  rating          Int
 }

@@ -1,8 +1,15 @@
 export const schema = gql`
   type Post {
     id: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
     user: User
     userId: String
+    published: Boolean!
+    title: String!
+    metaDescription: String!
+    slug: String!
+    excerpt: String!
     body: String!
     ingredients: [String]!
     preparation: [String]!
@@ -18,6 +25,11 @@ export const schema = gql`
 
   input CreatePostInput {
     userId: String
+    published: Boolean!
+    title: String!
+    metaDescription: String!
+    slug: String!
+    excerpt: String!
     body: String!
     ingredients: [String]!
     preparation: [String]!
@@ -28,6 +40,11 @@ export const schema = gql`
 
   input UpdatePostInput {
     userId: String
+    published: Boolean
+    title: String
+    metaDescription: String
+    slug: String
+    excerpt: String
     body: String
     ingredients: [String]!
     preparation: [String]!
