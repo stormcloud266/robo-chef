@@ -16,6 +16,7 @@ export const schema = gql`
     preparation: [String]!
     prepTime: Int!
     cookTime: Int!
+    averageRating: Int
   }
 
   type Query {
@@ -35,6 +36,7 @@ export const schema = gql`
     preparation: [String]!
     prepTime: Int!
     cookTime: Int!
+    averageRating: Int
   }
 
   input UpdatePostInput {
@@ -49,6 +51,7 @@ export const schema = gql`
     preparation: [String]!
     prepTime: Int
     cookTime: Int
+    averageRating: Int
   }
 
   type Mutation {

@@ -12,6 +12,7 @@ export const QUERY = gql`
       title
       excerpt
       slug
+      averageRating
     }
   }
 `
@@ -31,6 +32,7 @@ export const Success = ({
 }: CellSuccessProps<FindPostsListQuery, FindPostsListQueryVariables>) => {
   return (
     <section>
+      <p>{JSON.stringify(posts)}</p>
       {posts.map(({ id, title, excerpt }) => {
         return (
           <article key={id} className="border border-gray-300">
