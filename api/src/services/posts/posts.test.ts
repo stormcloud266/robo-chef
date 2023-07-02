@@ -27,23 +27,27 @@ describe('posts', () => {
       input: {
         title: 'String',
         metaDescription: 'String',
+        slug: 'String',
+        excerpt: 'String',
         body: 'String',
         ingredients: 'String',
         preparation: 'String',
-        prepTime: 6617872,
-        cookTime: 2198324,
-        rating: 1646648,
+        prepTime: 1826708,
+        cookTime: 1097360,
+        rating: 2849009,
       },
     })
 
     expect(result.title).toEqual('String')
     expect(result.metaDescription).toEqual('String')
+    expect(result.slug).toEqual('String')
+    expect(result.excerpt).toEqual('String')
     expect(result.body).toEqual('String')
     expect(result.ingredients).toEqual('String')
     expect(result.preparation).toEqual('String')
-    expect(result.prepTime).toEqual(6617872)
-    expect(result.cookTime).toEqual(2198324)
-    expect(result.rating).toEqual(1646648)
+    expect(result.prepTime).toEqual(1826708)
+    expect(result.cookTime).toEqual(1097360)
+    expect(result.rating).toEqual(2849009)
   })
 
   scenario('updates a post', async (scenario: StandardScenario) => {

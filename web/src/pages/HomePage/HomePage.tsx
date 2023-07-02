@@ -1,4 +1,5 @@
 import { useAuth } from 'src/auth'
+import PostsListCell from 'src/components/PostsListCell'
 
 const HomePage = () => {
   const { logIn, logOut, signUp, isAuthenticated } = useAuth()
@@ -12,6 +13,8 @@ const HomePage = () => {
       <button onClick={() => logIn()}>log in</button>
       <br />
       <button onClick={() => logOut()}>sign out</button>
+
+      <PostsListCell take={10} skip={0} />
     </>
   )
 }
