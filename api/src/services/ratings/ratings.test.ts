@@ -30,20 +30,20 @@ describe('ratings', () => {
 
   scenario('creates a rating', async () => {
     const result = await createRating({
-      input: { rating: 1422384 },
+      input: { rating: 6654046 },
     })
 
-    expect(result.rating).toEqual(1422384)
+    expect(result.rating).toEqual(6654046)
   })
 
   scenario('updates a rating', async (scenario: StandardScenario) => {
     const original = (await rating({ id: scenario.rating.one.id })) as Rating
     const result = await updateRating({
       id: original.id,
-      input: { rating: 5907218 },
+      input: { rating: 1770913 },
     })
 
-    expect(result.rating).toEqual(5907218)
+    expect(result.rating).toEqual(1770913)
   })
 
   scenario('deletes a rating', async (scenario: StandardScenario) => {
