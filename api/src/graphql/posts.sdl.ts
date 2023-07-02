@@ -3,6 +3,9 @@ export const schema = gql`
     id: String!
     user: User
     userId: String
+    published: Boolean!
+    title: String!
+    metaDescription: String!
     body: String!
     ingredients: [String]!
     preparation: [String]!
@@ -18,6 +21,9 @@ export const schema = gql`
 
   input CreatePostInput {
     userId: String
+    published: Boolean!
+    title: String!
+    metaDescription: String!
     body: String!
     ingredients: [String]!
     preparation: [String]!
@@ -28,6 +34,9 @@ export const schema = gql`
 
   input UpdatePostInput {
     userId: String
+    published: Boolean
+    title: String
+    metaDescription: String
     body: String
     ingredients: [String]!
     preparation: [String]!

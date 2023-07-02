@@ -25,31 +25,35 @@ describe('posts', () => {
   scenario('creates a post', async () => {
     const result = await createPost({
       input: {
+        title: 'String',
+        metaDescription: 'String',
         body: 'String',
         ingredients: 'String',
         preparation: 'String',
-        prepTime: 8556586,
-        cookTime: 3291938,
-        rating: 4790445,
+        prepTime: 6617872,
+        cookTime: 2198324,
+        rating: 1646648,
       },
     })
 
+    expect(result.title).toEqual('String')
+    expect(result.metaDescription).toEqual('String')
     expect(result.body).toEqual('String')
     expect(result.ingredients).toEqual('String')
     expect(result.preparation).toEqual('String')
-    expect(result.prepTime).toEqual(8556586)
-    expect(result.cookTime).toEqual(3291938)
-    expect(result.rating).toEqual(4790445)
+    expect(result.prepTime).toEqual(6617872)
+    expect(result.cookTime).toEqual(2198324)
+    expect(result.rating).toEqual(1646648)
   })
 
   scenario('updates a post', async (scenario: StandardScenario) => {
     const original = (await post({ id: scenario.post.one.id })) as Post
     const result = await updatePost({
       id: original.id,
-      input: { body: 'String2' },
+      input: { title: 'String2' },
     })
 
-    expect(result.body).toEqual('String2')
+    expect(result.title).toEqual('String2')
   })
 
   scenario('deletes a post', async (scenario: StandardScenario) => {

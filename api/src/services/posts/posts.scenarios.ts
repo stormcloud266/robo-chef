@@ -5,22 +5,26 @@ export const standard = defineScenario<Prisma.PostCreateArgs>({
   post: {
     one: {
       data: {
+        title: 'String',
+        metaDescription: 'String',
         body: 'String',
         ingredients: 'String',
         preparation: 'String',
-        prepTime: 8387628,
-        cookTime: 6140259,
-        rating: 8001856,
+        prepTime: 7680871,
+        cookTime: 906769,
+        rating: 111982,
       },
     },
     two: {
       data: {
+        title: 'String',
+        metaDescription: 'String',
         body: 'String',
         ingredients: 'String',
         preparation: 'String',
-        prepTime: 2092475,
-        cookTime: 9920465,
-        rating: 2048746,
+        prepTime: 1151850,
+        cookTime: 2408424,
+        rating: 8211930,
       },
     },
   },
