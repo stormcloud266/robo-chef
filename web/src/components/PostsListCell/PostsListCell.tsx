@@ -1,3 +1,4 @@
+import { useMutation } from '@apollo/client'
 import type {
   FindPostsListQuery,
   FindPostsListQueryVariables,
@@ -12,7 +13,14 @@ export const QUERY = gql`
       title
       excerpt
       slug
-      rating
+      averageRating
+    }
+  }
+`
+const UPSERT_RATING_MUTATION = gql`
+  mutation UpsertRatingMutation($postId: String!, $rating: Int!) {
+    upsertRating(postId: $postId, rating: $rating) {
+      success
     }
   }
 `
@@ -30,14 +38,37 @@ export const Failure = ({
 export const Success = ({
   posts,
 }: CellSuccessProps<FindPostsListQuery, FindPostsListQueryVariables>) => {
+  const [rate, { data }] = useMutation(UPSERT_RATING_MUTATION)
+
+  console.log(data)
+
   return (
     <section>
-      {posts.map(({ id, title, excerpt, rating }) => {
+      <p>{JSON.stringify(posts)}</p>
+      {posts.map(({ id, title, excerpt }) => {
         return (
           <article key={id} className="border border-gray-300">
             <h1 className="text-3xl font-bold">{title}</h1>
-            <p className="font-bold text-orange-600">{rating}</p>
+            <p className="font-bold text-orange-600"></p>
             <p>{excerpt}</p>
+            <div>
+              {[...Array(5).keys()].map((num) => (
+                <button
+                  onClick={() => {
+                    rate({
+                      variables: {
+                        postId: id,
+                        rating: num + 1,
+                      },
+                    })
+                  }}
+                  key={num}
+                  className=" mr-1 bg-gray-200 p-1"
+                >
+                  {num + 1}
+                </button>
+              ))}
+            </div>
           </article>
         )
       })}

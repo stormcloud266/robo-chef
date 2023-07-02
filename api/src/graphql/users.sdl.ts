@@ -1,9 +1,12 @@
 export const schema = gql`
   type User {
     id: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
     authId: String!
     email: String
     posts: [Post]!
+    ratings: [Rating]!
   }
 
   type Query {

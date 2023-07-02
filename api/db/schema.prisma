@@ -9,11 +9,15 @@ generator client {
 }
 
 model User {
-  id     String  @id @default(cuid())
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
   authId String  @unique
   email  String? @unique
 
-  posts Post[]
+  posts   Post[]
+  ratings Rating[]
 }
 
 model Post {
@@ -21,10 +25,11 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  user      User?   @relation(fields: [userId], references: [id])
-  userId    String?
-  published Boolean @default(false)
+  user    User?    @relation(fields: [userId], references: [id])
+  userId  String?
+  ratings Rating[]
 
+  published       Boolean  @default(false)
   title           String
   metaDescription String
   slug            String
@@ -34,5 +39,19 @@ model Post {
   preparation     String[]
   prepTime        Int
   cookTime        Int
-  rating          Int
+}
+
+model Rating {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+
+  rating Int
+
+  @@unique([userId, postId])
 }
