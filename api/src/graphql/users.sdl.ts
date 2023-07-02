@@ -3,6 +3,7 @@ export const schema = gql`
     id: String!
     authId: String!
     email: String
+    posts: [Post]!
   }
 
   type Query {
