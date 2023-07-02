@@ -39,4 +39,7 @@ export const Post: PostRelationResolvers = {
   user: (_obj, { root }) => {
     return db.post.findUnique({ where: { id: root?.id } }).user()
   },
+  ratings: (_obj, { root }) => {
+    return db.post.findUnique({ where: { id: root?.id } }).ratings()
+  },
 }

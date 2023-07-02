@@ -12,7 +12,6 @@ export const QUERY = gql`
       title
       excerpt
       slug
-      rating
     }
   }
 `
@@ -32,11 +31,11 @@ export const Success = ({
 }: CellSuccessProps<FindPostsListQuery, FindPostsListQueryVariables>) => {
   return (
     <section>
-      {posts.map(({ id, title, excerpt, rating }) => {
+      {posts.map(({ id, title, excerpt }) => {
         return (
           <article key={id} className="border border-gray-300">
             <h1 className="text-3xl font-bold">{title}</h1>
-            <p className="font-bold text-orange-600">{rating}</p>
+            <p className="font-bold text-orange-600"></p>
             <p>{excerpt}</p>
           </article>
         )

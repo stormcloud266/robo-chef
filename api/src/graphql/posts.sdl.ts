@@ -5,6 +5,7 @@ export const schema = gql`
     updatedAt: DateTime!
     user: User
     userId: String
+    ratings: [Rating]!
     published: Boolean!
     title: String!
     metaDescription: String!
@@ -15,7 +16,6 @@ export const schema = gql`
     preparation: [String]!
     prepTime: Int!
     cookTime: Int!
-    rating: Int!
   }
 
   type Query {
@@ -35,7 +35,6 @@ export const schema = gql`
     preparation: [String]!
     prepTime: Int!
     cookTime: Int!
-    rating: Int!
   }
 
   input UpdatePostInput {
@@ -50,7 +49,6 @@ export const schema = gql`
     preparation: [String]!
     prepTime: Int
     cookTime: Int
-    rating: Int
   }
 
   type Mutation {

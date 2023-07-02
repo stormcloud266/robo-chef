@@ -32,9 +32,8 @@ describe('posts', () => {
         body: 'String',
         ingredients: 'String',
         preparation: 'String',
-        prepTime: 1826708,
-        cookTime: 1097360,
-        rating: 2849009,
+        prepTime: 111400,
+        cookTime: 2163545,
       },
     })
 
@@ -45,9 +44,8 @@ describe('posts', () => {
     expect(result.body).toEqual('String')
     expect(result.ingredients).toEqual('String')
     expect(result.preparation).toEqual('String')
-    expect(result.prepTime).toEqual(1826708)
-    expect(result.cookTime).toEqual(1097360)
-    expect(result.rating).toEqual(2849009)
+    expect(result.prepTime).toEqual(111400)
+    expect(result.cookTime).toEqual(2163545)
   })
 
   scenario('updates a post', async (scenario: StandardScenario) => {
