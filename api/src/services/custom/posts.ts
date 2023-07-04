@@ -19,7 +19,25 @@ export const Post: PostRelationResolvers = {
         rating: true,
       },
     })
-
     return ratings._avg.rating
+  },
+  userRating: async (_obj, { root }) => {
+    if (typeof context.currentUser.id !== 'string') {
+      return undefined
+    }
+
+    const { rating } = await db.rating.findUnique({
+      where: {
+        userId_postId: {
+          postId: root?.id,
+          userId: context.currentUser.id,
+        },
+      },
+      select: {
+        rating: true,
+      },
+    })
+
+    return rating
   },
 }

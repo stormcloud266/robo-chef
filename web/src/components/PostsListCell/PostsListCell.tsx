@@ -14,9 +14,11 @@ export const QUERY = gql`
       excerpt
       slug
       averageRating
+      userRating
     }
   }
 `
+
 const UPSERT_RATING_MUTATION = gql`
   mutation UpsertRatingMutation($postId: String!, $rating: Int!) {
     upsertRating(postId: $postId, rating: $rating) {
@@ -38,18 +40,18 @@ export const Failure = ({
 export const Success = ({
   posts,
 }: CellSuccessProps<FindPostsListQuery, FindPostsListQueryVariables>) => {
-  const [rate, { data }] = useMutation(UPSERT_RATING_MUTATION)
-
-  console.log(data)
+  const [rate] = useMutation(UPSERT_RATING_MUTATION)
 
   return (
     <section>
       <p>{JSON.stringify(posts)}</p>
-      {posts.map(({ id, title, excerpt }) => {
+      {posts.map(({ id, title, excerpt, averageRating, userRating }) => {
         return (
           <article key={id} className="border border-gray-300">
             <h1 className="text-3xl font-bold">{title}</h1>
-            <p className="font-bold text-orange-600"></p>
+            <p className="font-bold text-orange-600">
+              {userRating || averageRating}
+            </p>
             <p>{excerpt}</p>
             <div>
               {[...Array(5).keys()].map((num) => (
