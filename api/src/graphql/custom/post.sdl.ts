@@ -1,5 +1,5 @@
 export const schema = gql`
   type Query {
-    postsList(take: Int, skip: Int): [Post!]! @requireAuth
+    postsList(take: Int, skip: Int): [Post!]! @skipAuth
   }
 `
